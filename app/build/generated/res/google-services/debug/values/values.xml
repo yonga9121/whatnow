@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="default_web_client_id" translatable="false">124282534694-hlk78pl59u8d4ts3820r7b050jmgekjv.apps.googleusercontent.com</string>
+    <string name="gcm_defaultSenderId" translatable="false">124282534694</string>
+    <string name="google_api_key" translatable="false">AIzaSyC9_7-7NACfiFVqc0uEBtKCY_uDbgo-P6s</string>
+    <string name="google_app_id" translatable="false">1:124282534694:android:b833691078451b0eab9fe7</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyC9_7-7NACfiFVqc0uEBtKCY_uDbgo-P6s</string>
+    <string name="google_storage_bucket" translatable="false">whatnow-fb4d4.appspot.com</string>
+    <string name="project_id" translatable="false">whatnow-fb4d4</string>
+</resources>
