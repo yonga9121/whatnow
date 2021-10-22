@@ -12,10 +12,10 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/navigation_dashboard"
-        android:name="com.whatnow.ui.dashboard.DashboardFragment"
-        android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        android:id="@+id/navigation_ofertas"
+        android:name="com.whatnow.ui.ofertas.OfertasFragment"
+        android:label="@string/ofertas"
+        tools:layout="@layout/fragment_ofertas" />
 
     <fragment
         android:id="@+id/navigation_notifications"
