@@ -10,6 +10,7 @@ public class Utils {
             SharedPreferences sp = context.getSharedPreferences("myPrefs", Context.MODE_PRIVATE);
             SharedPreferences.Editor spe = sp.edit();
             spe.putString(key, value);
+            spe.commit();
             return true;
         } catch (Exception e) {
             e.printStackTrace();
@@ -21,6 +22,7 @@ public class Utils {
         try {
             SharedPreferences sp = context.getSharedPreferences("myPrefs", Context.MODE_PRIVATE);
             String token = sp.getString(key, null);
+            System.out.println("TOKEEEEN " + token);
             if(token != null)
                 return token;
             return null;

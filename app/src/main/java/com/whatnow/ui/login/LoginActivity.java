@@ -48,6 +48,8 @@ public class LoginActivity extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         String token = Utils.getString("token", getBaseContext());
+        System.out.println("ANYTHING HERE???");
+        System.out.println(token);
         if(token != null){
             Intent intent = new Intent(getBaseContext(), MainActivity.class);
             startActivity(intent);
