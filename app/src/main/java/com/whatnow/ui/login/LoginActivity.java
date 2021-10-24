@@ -18,11 +18,21 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.gson.Gson;
 import com.whatnow.MainActivity;
 import com.whatnow.R;
+import com.whatnow.controllers.users.UsersController;
+import com.whatnow.models.Session;
 import com.whatnow.ui.register.SkillsActivity;
 import com.whatnow.ui.register.registro;
 import com.whatnow.utils.Utils;
+
+import java.io.IOException;
+
+import okhttp3.ResponseBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -101,23 +111,30 @@ public class LoginActivity extends AppCompatActivity {
 
     // LOGIN CON EMAIL Y PASSWORD
     private void InicioUser(final String email, String password){
-        miAuth.signInWithEmailAndPassword(email, password)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            // Sign in success, update UI with the signed-in user's information
-                            FirebaseUser user = miAuth.getCurrentUser();
-                            if(user != null) {
-                                GoMainScreen();
-                            }
-                        } else {
-                            // If sign in fails, display a message to the user.
-                            updateUi(" Falla de autentificación.");
-                        }
-                        CargaProc.dismiss();
-                    }
-                });
+        UsersController.signin(email, password).enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                Gson gson = new Gson();
+                try{
+                    String auxResponse = response.body().string();
+                    Session session = gson.fromJson(auxResponse, Session.class);
+                    Utils.saveString("token", session.getToken(), getBaseContext());
+                    Intent intent = new Intent(getBaseContext(), MainActivity.class);
+                    startActivity(intent);
+                    finish();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                    Toast.makeText(getApplicationContext(), "Fallo el inicio de sesion. Intenta de nuevo", Toast.LENGTH_SHORT);
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                t.printStackTrace();
+                Toast.makeText(getApplicationContext(), "Fallo el inicio de sesion. Intenta de nuevo", Toast.LENGTH_SHORT);
+            }
+        });
     }
 
     private void updateUi(String msg) {

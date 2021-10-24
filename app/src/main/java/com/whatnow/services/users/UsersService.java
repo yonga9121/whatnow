@@ -15,4 +15,8 @@ public interface UsersService {
     @POST("api/users/signup")
     Call<ResponseBody> signup(@Body RequestBody requestBody);
 
+    @POST("api/users/signin")
+    Call<ResponseBody> signin(@Body RequestBody requestBody);
+
+
 }

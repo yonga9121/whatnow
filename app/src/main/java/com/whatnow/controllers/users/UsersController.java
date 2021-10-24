@@ -36,4 +36,17 @@ public class UsersController extends BaseController {
         RequestBody requestBody = RequestBody.create(MediaType.parse("application/json"), body.toString());
         return usersService.signup(requestBody);
     }
+
+    public static final Call<ResponseBody> signin(String email, String password){
+        JSONObject body = new JSONObject();
+        try{
+            body.put("email", email);
+            body.put("password", password);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        RequestBody requestBody = RequestBody.create(MediaType.parse("application/json"), body.toString());
+        return usersService.signin(requestBody);
+
+    }
 }

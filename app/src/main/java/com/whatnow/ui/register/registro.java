@@ -74,7 +74,6 @@ public class registro extends AppCompatActivity {
                         Gson gson = new Gson();
                         try {
                             String auxResponse = response.body().string();
-                            System.out.println("HEY MOTHER FUCKERS " + auxResponse);
                             Session session = gson.fromJson(auxResponse, Session.class);
                             Utils.saveString("token", session.getToken(), getBaseContext());
                             Intent intent = new Intent(getBaseContext(), MainActivity.class);
@@ -82,13 +81,14 @@ public class registro extends AppCompatActivity {
                             finish();
                         } catch (IOException e) {
                             e.printStackTrace();
+                            Toast.makeText(getApplicationContext(), "Fallo el registrio. Intenta de nuevo", Toast.LENGTH_SHORT);
                         }
                     }
 
                     @Override
                     public void onFailure(Call<ResponseBody> call, Throwable t) {
                         t.printStackTrace();
-                        Toast.makeText(getApplicationContext(), "Sign up failed. Try again", Toast.LENGTH_SHORT);
+                        Toast.makeText(getApplicationContext(), "Fallo el registrio. Intenta de nuevo", Toast.LENGTH_SHORT);
                     }
                 });
             }
