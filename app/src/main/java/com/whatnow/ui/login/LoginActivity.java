@@ -22,6 +22,7 @@ import com.whatnow.MainActivity;
 import com.whatnow.R;
 import com.whatnow.ui.register.SkillsActivity;
 import com.whatnow.ui.register.registro;
+import com.whatnow.utils.Utils;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -36,6 +37,12 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        String token = Utils.getString("token", getBaseContext());
+        if(token != null){
+            Intent intent = new Intent(getBaseContext(), MainActivity.class);
+            startActivity(intent);
+            finish();
+        }
         setContentView(R.layout.activity_login);
         miAuth = FirebaseAuth.getInstance();
         olvidoContraText = findViewById(R.id.textOlvido);

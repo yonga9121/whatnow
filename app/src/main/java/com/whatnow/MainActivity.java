@@ -11,13 +11,16 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import com.whatnow.databinding.ActivityMainBinding;
+import com.whatnow.utils.Utils;
 
 public class MainActivity extends AppCompatActivity {
 
     private ActivityMainBinding binding;
-
+    private String token;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        token = Utils.getString("token", getBaseContext());
+
         super.onCreate(savedInstanceState);
 
         binding = ActivityMainBinding.inflate(getLayoutInflater());
