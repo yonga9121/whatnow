@@ -7,40 +7,44 @@
     android:layout_height="match_parent"
     tools:context=".ui.register.Fragment_Skills_1">
 
-    <SearchView
-        android:id="@+id/SearchSkills"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:layout_margin="15dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_height="match_parent">
 
-    </SearchView>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
 
-    <ListView
-        android:id="@+id/lstSkills"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_margin="15dp"
-        app:layout_constraintBottom_toTopOf="@+id/lstSelect"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/SearchSkills">
+            <EditText
+                android:id="@+id/SearchSkills"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp">
 
-    </ListView>
+            </EditText>
 
-    <ListView
-        android:id="@+id/lstSelect"
-        android:layout_width="376dp"
-        android:layout_height="152dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginEnd="15dp"
-        android:layout_marginRight="15dp"
-        android:layout_marginBottom="80dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.454"
-        app:layout_constraintStart_toStartOf="parent" />
+            <com.cunoraz.tagview.TagView
+                android:id="@+id/lstSkills"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp">
+
+            </com.cunoraz.tagview.TagView>
+
+            <com.cunoraz.tagview.TagView
+                android:id="@+id/tag_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                app:lineMargin="5dp"
+                app:tagMargin="5dp"
+                app:textPaddingBottom="5dp"
+                app:textPaddingLeft="8dp"
+                app:textPaddingRight="8dp"
+                app:textPaddingTop="5dp" />
+
+        </LinearLayout>
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
