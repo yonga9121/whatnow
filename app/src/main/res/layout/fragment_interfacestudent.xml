@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:foregroundGravity="center">
+
+        <EditText
+            android:id="@+id/editTextTextPersonName2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:gravity="center"
+            android:inputType="textPersonName"
+            android:text="Empleo Ya"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout_editor_absoluteX="0dp" />
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Volver"
+            app:backgroundTint="@color/purple_500"
+            tools:layout_editor_absoluteX="158dp"
+            tools:layout_editor_absoluteY="667dp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_anchor="@+id/constraintLayout"
+        app:layout_anchorGravity="center">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="263dp"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/editTextTextPersonName3"
+                    android:layout_width="78dp"
+                    android:layout_height="57dp"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:text="Nombre :" />
+
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:hint="nombre" />
+
+                <ImageView
+                    android:id="@+id/imageView3"
+                    android:layout_width="155dp"
+                    android:layout_height="141dp"
+                    android:layout_gravity="center|left|center_vertical"
+                    android:layout_marginTop="8dp"
+                    android:foregroundGravity="center"
+                    tools:srcCompat="@tools:sample/avatars" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="398dp"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="127dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <ImageButton
+                        android:id="@+id/imageButton4"
+                        android:layout_width="29dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="23dp"
+                        android:layout_weight="33"
+                        app:srcCompat="@android:drawable/btn_star_big_on" />
+
+                    <Space
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="33" />
+
+                    <EditText
+                        android:id="@+id/editTextTextPersonName6"
+                        android:layout_width="68dp"
+                        android:layout_height="53dp"
+                        android:layout_gravity="center"
+                        android:layout_weight="33"
+                        android:ems="10"
+                        android:foregroundGravity="center"
+                        android:gravity="center"
+                        android:inputType="textPersonName"
+                        android:text="Carrera"
+                        android:textSize="12sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="130dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <ImageButton
+                        android:id="@+id/imageButton3"
+                        android:layout_width="124dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="23dp"
+                        android:layout_weight="2"
+                        app:srcCompat="@android:drawable/btn_star_big_on" />
+
+                    <Space
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="33" />
+
+                    <EditText
+                        android:id="@+id/editTextTextPersonName8"
+                        android:layout_width="79dp"
+                        android:layout_height="48dp"
+                        android:layout_gravity="center"
+                        android:layout_weight="33"
+                        android:ems="10"
+                        android:foregroundGravity="center"
+                        android:gravity="center"
+                        android:inputType="textPersonName"
+                        android:text="Experiencias"
+                        android:textSize="12sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="142dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <ImageButton
+                        android:id="@+id/imageButton2"
+                        android:layout_width="123dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="23dp"
+                        android:layout_weight="2"
+                        app:srcCompat="@android:drawable/btn_star_big_on" />
+
+                    <Space
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="33" />
+
+                    <EditText
+                        android:id="@+id/editTextTextPersonName7"
+                        android:layout_width="79dp"
+                        android:layout_height="48dp"
+                        android:layout_gravity="center"
+                        android:layout_weight="33"
+                        android:ems="10"
+                        android:gravity="center"
+                        android:inputType="textPersonName"
+                        android:text="Semestre"
+                        android:textSize="12sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="140dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <ImageButton
+                        android:id="@+id/imageButton"
+                        android:layout_width="124dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="23dp"
+                        android:layout_weight="2"
+                        app:srcCompat="@android:drawable/btn_star_big_on" />
+
+                    <Space
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="33" />
+
+                    <EditText
+                        android:id="@+id/editTextTextPersonName5"
+                        android:layout_width="79dp"
+                        android:layout_height="48dp"
+                        android:layout_gravity="center"
+                        android:layout_weight="33"
+                        android:ems="10"
+                        android:foregroundGravity="center|right"
+                        android:gravity="center"
+                        android:inputType="textPersonName"
+                        android:text="Universidad"
+                        android:textSize="12sp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
