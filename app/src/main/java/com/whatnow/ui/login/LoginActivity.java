@@ -51,7 +51,7 @@ public class LoginActivity extends AppCompatActivity {
         System.out.println("ANYTHING HERE???");
         System.out.println(token);
         if(token != null){
-            Intent intent = new Intent(getBaseContext(), MainActivity.class);
+            Intent intent = new Intent(getBaseContext(), SkillsActivity.class);
             startActivity(intent);
             finish();
         }

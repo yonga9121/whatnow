@@ -6,7 +6,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class BaseController {
 
     public static final Retrofit retrofit = new Retrofit.Builder()
-            .baseUrl("https://whatnowback.herokuapp.com")
+            .baseUrl("http://10.0.2.2:3000")
             .addConverterFactory(GsonConverterFactory.create())
             .build();
 }
