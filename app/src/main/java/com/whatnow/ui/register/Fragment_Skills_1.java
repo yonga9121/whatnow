@@ -3,36 +3,32 @@ package com.whatnow.ui.register;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.RecyclerView;
 
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
-import android.widget.SearchView;
+import android.widget.EditText;
 
+import com.cunoraz.tagview.Tag;
+import com.cunoraz.tagview.TagView;
 import com.whatnow.R;
 
 import java.util.ArrayList;
 
 public class Fragment_Skills_1 extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
-    private SearchView srchSkills;
-    private ListView lstSkills;
-    private ListView lstSelect;
-    //private RecyclerView lstSelect;
-    View rootView;
+    private EditText srchSkills;
+    private TagView lstSelect;
+    private TagView tagGroup;
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    private ArrayList<String> tagList = new ArrayList<>();
+
+    View rootView;
 
     public Fragment_Skills_1() {
         // Required empty public constructor
@@ -51,8 +47,8 @@ public class Fragment_Skills_1 extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+            //mParam1 = getArguments().getString(ARG_PARAM1);
+            //mParam2 = getArguments().getString(ARG_PARAM2);
         }
     }
 
@@ -61,36 +57,71 @@ public class Fragment_Skills_1 extends Fragment {
                              Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.fragment__skills_1, container, false);
 
+        lstSelect = rootView.findViewById(R.id.lstSkills);
+        tagGroup = rootView.findViewById(R.id.tag_view);
         srchSkills = rootView.findViewById(R.id.SearchSkills);
-        lstSkills = rootView.findViewById(R.id.lstSkills);
-        lstSelect = rootView.findViewById(R.id.lstSelect);
 
-        ArrayList<Double> intNumero = new ArrayList<Double>();
-        ArrayList<String> strSeleccionadas = new ArrayList<String>();
+        tagList.add("hola");
+        tagList.add("prueba");
+        tagList.add("facebook");
+        tagList.add("youutube");
 
-        for(int i=0;i<=Integer.parseInt("6");i++){
-            intNumero.add(Math.pow(i,3));
-        }
-
-        // Arreglo con SKILLS
-        ArrayAdapter<?> adapter = new ArrayAdapter<>(getActivity(),
-                android.R.layout.simple_list_item_1, intNumero);
-        lstSkills.setAdapter(adapter);
-
-        // SKILLS seleccionadas
-        ArrayAdapter<?> seleccionadas = new ArrayAdapter<>(getActivity(),
-                android.R.layout.simple_list_item_1, strSeleccionadas);
-        lstSelect.setAdapter(seleccionadas);
-
-        lstSkills.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+        //set click listener
+        tagGroup.setOnTagClickListener(new TagView.OnTagClickListener() {
             @Override
-            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
-                strSeleccionadas.add(lstSkills.getItemAtPosition(i).toString());
-                lstSelect.setAdapter(seleccionadas);
-                return false;
+            public void onTagClick(Tag tag, int position) {
+                lstSelect.addTag(tag);
+                srchSkills.setText("");
+            }
+        });
+
+        //set long click listener
+        lstSelect.setOnTagLongClickListener(new TagView.OnTagLongClickListener() {
+            @Override
+            public void onTagLongClick(Tag tag, int position) {
+                lstSelect.remove(position);
+            }
+        });
+
+        srchSkills.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                setTags(s);
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
             }
         });
 
         return rootView;
+    }
+
+    private void setTags(CharSequence cs) {
+
+        if (cs.toString().equals("")) {
+            tagGroup.addTags(new ArrayList<Tag>());
+            return;
+        }
+
+        String text = cs.toString();
+        ArrayList<Tag> tags = new ArrayList<>();
+        Tag tag;
+
+
+        for (int i = 0; i < tagList.size(); i++) {
+            if (tagList.get(i).toLowerCase().startsWith(text.toLowerCase())) {
+                tag = new Tag(tagList.get(i).toString());
+                tags.add(tag);
+            }
+        }
+
+        tagGroup.addTags(tags);
     }
 }
