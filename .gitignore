@@ -1,1 +1,10 @@
-local.properties
+
+.gradle/
+.idea/
+.project
+.settings/
+./local.properties
+app/.classpath
+app/build/
+
+
