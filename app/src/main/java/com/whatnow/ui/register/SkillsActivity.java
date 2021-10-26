@@ -38,8 +38,8 @@ public class SkillsActivity extends AppCompatActivity {
         fragment_skills_4 = new Fragment_Skills_4();
 
         getSupportFragmentManager().beginTransaction().add(R.id.contenedor,fragment_skills_1).commit();
-
         btnFragments.setOnClickListener(new View.OnClickListener() {
+            // AQUI ESTAN LOS BOTONES SIQUIENTE
             @Override
             public void onClick(View view) {
                 FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();

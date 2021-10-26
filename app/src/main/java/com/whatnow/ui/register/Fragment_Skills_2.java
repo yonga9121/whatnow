@@ -75,6 +75,7 @@ public class Fragment_Skills_2 extends Fragment {
         tagGroup.setOnTagClickListener(new TagView.OnTagClickListener() {
             @Override
             public void onTagClick(Tag tag, int position) {
+                //AQUI SELECCIONA ALGO DE LA LISTA DE RESULTADOS
                 lstSelect.addTag(tag);
                 srchSkills.setText("");
             }
@@ -96,7 +97,7 @@ public class Fragment_Skills_2 extends Fragment {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                setTags(s);
+                setTags(s); //AQUI SE LEE EL CAMBIO DE TEXTO
             }
 
             @Override
