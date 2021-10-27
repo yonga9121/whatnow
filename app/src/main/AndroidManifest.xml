@@ -2,8 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.whatnow">
 
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.INTERNET" /> <!-- Use Camara -->
+    <uses-permission android:name="android.permission.CAMERA" /> <!-- Use Almacenamiento para lectura -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" /> <!-- Use Almacenamiento para escritura -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -13,6 +15,21 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.WhatNow"
         android:usesCleartextTraffic="true">
+        <activity
+            android:name=".OnFailedActivity"
+            android:exported="true" />
+        <activity
+            android:name=".OnSuccessActivity"
+            android:exported="true" />
+        <activity
+            android:name=".OnEvaluationActivity"
+            android:exported="true" />
+        <activity
+            android:name=".OnSelectionActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ui.VideoActivity"
+            android:exported="true" />
         <activity
             android:name=".ui.home.CandidatureListItem"
             android:exported="true" />
@@ -28,11 +45,27 @@
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
         </activity>
 
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="com.whatnow.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
             android:value="249694960450084" />
 
-        <activity android:name=".MainActivity" />
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".ui.register.registro"
             android:theme="@style/Theme.AppCompat.NoActionBar" />

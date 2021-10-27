@@ -4,13 +4,15 @@ public class Session {
 
     private String id;
     private String token;
+    private String owner_id;
 
     public Session() {
     }
 
-    public Session(String id, String token) {
+    public Session(String id, String token, String owner_id) {
         this.id = id;
         this.token = token;
+        this.owner_id = owner_id;
     }
 
     public String getId() {
@@ -27,5 +29,13 @@ public class Session {
 
     public void setToken(String token) {
         this.token = token;
+    }
+
+    public String getOwner_id() {
+        return owner_id;
+    }
+
+    public void setOwner_id(String owner_id) {
+        this.owner_id = owner_id;
     }
 }

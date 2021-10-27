@@ -5,7 +5,7 @@ public class Offer {
     private String id;
     private String name;
     private String desc;
-    private String descVideoUrl;
+    private String desc_video_url;
     private Company company;
 
     public Offer() {
@@ -15,7 +15,7 @@ public class Offer {
         this.id = id;
         this.name = name;
         this.desc = desc;
-        this.descVideoUrl = desc_video_url;
+        this.desc_video_url = desc_video_url;
         this.company = company;
     }
 
@@ -51,11 +51,11 @@ public class Offer {
         this.company = company;
     }
 
-    public String getDescVideoUrl() {
-        return descVideoUrl;
+    public String getDesc_video_url() {
+        return desc_video_url;
     }
 
-    public void setDescVideoUrl(String descVideoUrl) {
-        this.descVideoUrl = descVideoUrl;
+    public void setDesc_video_url(String desc_video_url) {
+        this.desc_video_url = desc_video_url;
     }
 }

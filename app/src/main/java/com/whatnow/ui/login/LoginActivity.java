@@ -51,7 +51,7 @@ public class LoginActivity extends AppCompatActivity {
         System.out.println("ANYTHING HERE???");
         System.out.println(token);
         if(token != null){
-            Intent intent = new Intent(getBaseContext(), SkillsActivity.class);
+            Intent intent = new Intent(getBaseContext(), MainActivity.class);
             startActivity(intent);
             finish();
         }
@@ -121,6 +121,7 @@ public class LoginActivity extends AppCompatActivity {
                     String auxResponse = response.body().string();
                     Session session = gson.fromJson(auxResponse, Session.class);
                     Utils.saveString("token", session.getToken(), getBaseContext());
+                    Utils.saveString("id", session.getOwner_id(), getBaseContext());
                     Intent intent = new Intent(getBaseContext(), MainActivity.class);
                     startActivity(intent);
                     finish();
