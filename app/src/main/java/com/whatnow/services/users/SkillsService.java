@@ -14,4 +14,7 @@ public interface SkillsService {
 
     @GET("api/users/skills")
     Call<ResponseBody> index(@Header("X-WHATNOW-TOKEN") String token, @Query("term") String term);
+
+    @GET("api/users/skills/soft")
+    Call<ResponseBody> softs(@Header("X-WHATNOW-TOKEN") String token, @Query("term") String term);
 }

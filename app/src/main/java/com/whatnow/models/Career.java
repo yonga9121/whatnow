@@ -3,14 +3,14 @@ package com.whatnow.models;
 public class Career {
 
     private String id;
-    private String career;
+    private String name;
 
     public Career() {
     }
 
-    public Career(String id, String career) {
+    public Career(String id, String name) {
         this.id = id;
-        this.career = career;
+        this.name = name;
     }
 
     public String getId() {
@@ -21,11 +21,11 @@ public class Career {
         this.id = id;
     }
 
-    public String getCareer() {
-        return career;
+    public String getName() {
+        return name;
     }
 
-    public void setCareer(String career) {
-        this.career = career;
+    public void setName(String name) {
+        this.name = name;
     }
 }

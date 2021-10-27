@@ -19,10 +19,7 @@ public class Fragment_Skills_3 extends Fragment {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
-    private EditText txtLogros;
-    private EditText txtInstitucion;
-    private Switch swtEgresado;
-    private CalendarView dateGraduacion;
+    public CalendarView dateGraduacion;
 
     View rootView;
 
@@ -52,10 +49,6 @@ public class Fragment_Skills_3 extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.fragment__skills_3, container, false);
-
-        txtLogros = rootView.findViewById(R.id.editTxtLogros);
-        txtInstitucion = rootView.findViewById(R.id.editTxtInstitucion);
-        swtEgresado = rootView.findViewById(R.id.swtEgresado);
         dateGraduacion = rootView.findViewById(R.id.dateGraduacion);
 
         return rootView;

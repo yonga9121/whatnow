@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".ui.register.registro">
 
+    <!-- From fragment 1 to fragment 2-->
     <Button
         android:id="@+id/btnFragments"
         android:layout_width="wrap_content"
@@ -16,6 +17,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
+    <!-- From fragment 2 to fragment careers-->
     <Button
         android:id="@+id/btnFragments2"
         android:layout_width="wrap_content"
@@ -26,6 +28,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
+    <!-- From fragment careers to fragment colleges-->
     <Button
         android:id="@+id/btnFragments3"
         android:layout_width="wrap_content"
@@ -36,8 +39,31 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
+    <!-- From fragment colleges to fragment 3-->
     <Button
         android:id="@+id/btnFragments4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:text="Terminar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <!-- From fragment 3 to fragment video-->
+    <Button
+        android:id="@+id/btnFragments5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:text="Terminar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <!-- From fragment video to end-->
+    <Button
+        android:id="@+id/btnFragments6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"

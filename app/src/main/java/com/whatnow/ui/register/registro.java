@@ -76,7 +76,7 @@ public class registro extends AppCompatActivity {
                             String auxResponse = response.body().string();
                             Session session = gson.fromJson(auxResponse, Session.class);
                             Utils.saveString("token", session.getToken(), getBaseContext());
-                            Intent intent = new Intent(getBaseContext(), MainActivity.class);
+                            Intent intent = new Intent(getBaseContext(), SkillsActivity.class);
                             startActivity(intent);
                             finish();
                         } catch (IOException e) {

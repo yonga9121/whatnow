@@ -18,44 +18,6 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/txtLogros"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:text="Logros" />
-
-            <EditText
-                android:id="@+id/editTxtLogros"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:ems="10"
-                android:gravity="start|top"
-                android:inputType="textMultiLine" />
-
-            <TextView
-                android:id="@+id/txtInstitucion"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:text="institucion educativa" />
-
-            <EditText
-                android:id="@+id/editTxtInstitucion"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:ems="10"
-                android:inputType="textPersonName" />
-
-            <Switch
-                android:id="@+id/swtEgresado"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:text="Egresado" />
-
-            <TextView
                 android:id="@+id/txtFechaGradu"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

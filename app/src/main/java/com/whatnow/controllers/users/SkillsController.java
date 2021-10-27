@@ -19,4 +19,8 @@ public class SkillsController extends BaseController  {
         return skillsService.index(token, term);
     }
 
+    public static final Call<ResponseBody> softs(String token, String term){
+        return skillsService.softs(token, term);
+    }
+
 }

@@ -17,9 +17,9 @@ import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
 import com.whatnow.R;
-import com.whatnow.controllers.users.CandidatureController;
-import com.whatnow.controllers.users.SkillsController;
-import com.whatnow.models.Skill;
+import com.whatnow.controllers.users.CollegesController;
+import com.whatnow.models.Career;
+import com.whatnow.models.College;
 import com.whatnow.utils.Utils;
 
 import java.io.IOException;
@@ -32,33 +32,47 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class Fragment_Skills_2 extends Fragment {
+/**
+ * A simple {@link Fragment} subclass.
+ * Use the {@link FragmentRegisterColleges#newInstance} factory method to
+ * create an instance of this fragment.
+ */
+public class FragmentRegisterColleges extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
-
-    private EditText srchSkills;
-    private TagView lstSelect;
+    private EditText srchColleges;
+    private TagView lstCollege;
     private TagView tagGroup;
     private ArrayList<Tag> tlist;
-    private ArrayList<Skill> skills;
-    public Map<Tag, Skill> selectedSkills = new HashMap<>();
+    private ArrayList<College> colleges;
+    public Map<Tag, College> selectedColleges = new HashMap<>();
     private String token;
-
     private ArrayList<String> tagList = new ArrayList<>();
-
     View rootView;
 
+    // TODO: Rename and change types of parameters
+    private String mParam1;
+    private String mParam2;
 
-    public Fragment_Skills_2() {
+    public FragmentRegisterColleges() {
         // Required empty public constructor
     }
 
-    public static Fragment_Skills_2 newInstance(String param1, String param2) {
-        Fragment_Skills_2 fragment = new Fragment_Skills_2();
+    /**
+     * Use this factory method to create a new instance of
+     * this fragment using the provided parameters.
+     *
+     * @param param1 Parameter 1.
+     * @param param2 Parameter 2.
+     * @return A new instance of fragment FragmentRegisterColleges.
+     */
+    // TODO: Rename and change types and number of parameters
+    public static FragmentRegisterColleges newInstance(String param1, String param2) {
+        FragmentRegisterColleges fragment = new FragmentRegisterColleges();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -69,41 +83,44 @@ public class Fragment_Skills_2 extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        token = Utils.getString("token", this.getContext());
+        token = Utils.getString("token", getContext());
+        if (getArguments() != null) {
+            mParam1 = getArguments().getString(ARG_PARAM1);
+            mParam2 = getArguments().getString(ARG_PARAM2);
+        }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        rootView = inflater.inflate(R.layout.fragment__skills_2, container, false);
+        rootView = inflater.inflate(R.layout.fragment_register_colleges, container, false);
 
-        lstSelect = rootView.findViewById(R.id.lstSkills);
+        lstCollege = rootView.findViewById(R.id.lstSkills);
         tagGroup = rootView.findViewById(R.id.tag_view);
-        srchSkills = rootView.findViewById(R.id.SearchSkills);
+        srchColleges = rootView.findViewById(R.id.SearchSkills);
 
         //set click listener
         tagGroup.setOnTagClickListener(new TagView.OnTagClickListener() {
             @Override
             public void onTagClick(Tag tag, int position) {
-                Skill skill = skills.get(position);
-                selectedSkills.put(tag, skill);
-                lstSelect.addTag(tag);
-                srchSkills.setText("");
+                College college = colleges.get(position);
+                selectedColleges.put(tag, college);
+                lstCollege.addTag(tag);
+                srchColleges.setText("");
             }
         });
 
         //set long click listener
-        lstSelect.setOnTagLongClickListener(new TagView.OnTagLongClickListener() {
+        lstCollege.setOnTagLongClickListener(new TagView.OnTagLongClickListener() {
             @Override
             public void onTagLongClick(Tag tag, int position) {
-
-                lstSelect.remove(position);
-                selectedSkills.remove(tag);
+                lstCollege.remove(position);
+                selectedColleges.remove(tag);
             }
         });
 
-        srchSkills.addTextChangedListener(new TextWatcher() {
+        srchColleges.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
@@ -114,10 +131,10 @@ public class Fragment_Skills_2 extends Fragment {
                 System.out.println("PRINTING ON TEXT CHANGED ");
                 System.out.println(s.length());
                 if(s.length() > 1){
-                    SkillsController.softs(token, s.toString()).enqueue(new Callback<ResponseBody>() {
+                    CollegesController.index(token, s.toString()).enqueue(new Callback<ResponseBody>() {
                         @Override
                         public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-                            System.out.println("RESPONSE Skills index");
+                            System.out.println("RESPONSE Careers index");
                             Gson gson = new Gson();
                             String auxResponse = null;
                             try {
@@ -129,22 +146,17 @@ public class Fragment_Skills_2 extends Fragment {
                                 JsonElement json = parser.parse(auxResponse);
 
                                 tlist = new ArrayList<>();
-                                skills = new ArrayList<>();
+                                colleges = new ArrayList<>();
 
                                 for(JsonElement e: json.getAsJsonArray()){
-                                    Skill skill = gson.fromJson(e, Skill.class);
-                                    skills.add(skill);
-                                    tlist.add(new Tag(skill.getName()));
+                                    College college = gson.fromJson(e, College.class);
+                                    colleges.add(college);
+                                    tlist.add(new Tag(college.getName()));
                                 }
                                 tagGroup.addTags(tlist);
                             } catch (IOException e) {
                                 e.printStackTrace();
                             }
-
-                            //JsonElement careersJson = json.getAsJsonObject().get("careers");
-                            //JsonElement softSkillsJson = json.getAsJsonObject().get("soft_skills");
-                            //JsonElement descVideoUrl = json.getAsJsonObject().get("desc_video").getAsJsonObject().get("url");
-                            //JsonElement collegesJson = json.getAsJsonObject().get("colleges");
                         }
 
                         @Override
@@ -162,27 +174,5 @@ public class Fragment_Skills_2 extends Fragment {
         });
 
         return rootView;
-    }
-
-    private void setTags(CharSequence cs) {
-
-        if (cs.toString().equals("")) {
-            tagGroup.addTags(new ArrayList<Tag>());
-            return;
-        }
-
-        String text = cs.toString();
-        ArrayList<Tag> tags = new ArrayList<>();
-        Tag tag;
-
-
-        for (int i = 0; i < tagList.size(); i++) {
-            if (tagList.get(i).toLowerCase().startsWith(text.toLowerCase())) {
-                tag = new Tag(tagList.get(i).toString());
-                tags.add(tag);
-            }
-        }
-
-        tagGroup.addTags(tags);
     }
 }

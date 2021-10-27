@@ -72,21 +72,6 @@ public class MainActivity extends AppCompatActivity {
                     JsonParser parser = new JsonParser();
                     JsonElement jsonArr = parser.parse(auxResponse);
                     for(JsonElement jsonElement : (JsonArray)jsonArr){
-                        /*JsonElement offerJson = jsonElement.getAsJsonObject().get("offer");
-                        JsonElement companyJson = offerJson.getAsJsonObject().get("company");
-                        Company company = gson.fromJson(companyJson, Company.class);
-                        Offer offer = new Offer(
-                                offerJson.getAsJsonObject().get("id").toString(),
-                                offerJson.getAsJsonObject().get("name").toString(),
-                                offerJson.getAsJsonObject().get("desc").toString(),
-                                company
-                        );
-                        candidatures.add(
-                                new Candidature(
-                                        jsonElement.getAsJsonObject().get("id").toString(),
-                                        offer
-                                )
-                        );*/
                         candidatures.add( gson.fromJson(jsonElement, Candidature.class) );
                     }
 
